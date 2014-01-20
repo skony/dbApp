@@ -1,0 +1,6 @@
+# Users
+
+- !!models.Student
+    email:      bob@gmail.com
+    name:       Bob
+    password:   secret
