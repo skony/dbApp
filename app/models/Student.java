@@ -14,8 +14,5 @@ public class Student extends User {
 	        String.class, Student.class
 	    );
 
-	public Student(String email, String name, String password) {
-		super(email, name, password);
-		// TODO Auto-generated constructor stub
-	}
+
 }

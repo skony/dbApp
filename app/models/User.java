@@ -1,30 +1,29 @@
 package models;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+
 import javax.persistence.*;
+
+import play.data.format.Formats;
+import play.data.validation.Constraints;
 import play.db.ebean.*;
+
 import com.avaje.ebean.*;
 
 @Entity
 public abstract class User extends Model {
 
-    @Id
+	@Id
+    @Constraints.Required
+    @Formats.NonEmpty
     public String email;
+    
+    @Constraints.Required
     public String name;
+    
+    @Constraints.Required
     public String password;
-    
-    public User(String email, String name, String password) {
-      this.email = email;
-      this.name = name;
-      this.password = password;
-    }
-    
-    String getemail() {
-    	return this.email;
-    }
-    
-    void setemail(String email) {
-    	this.email = email;
-    }
     
     public static User authenticate(String email, String password) {
         return find.where().eq("email", email)
@@ -35,5 +34,12 @@ public abstract class User extends Model {
         String.class, User.class
     );
     
+    public static Map<String,String> options() {
+        LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
+        for(User u: User.find.orderBy("name").findList()) {
+            options.put(u.email, u.name);
+        }
+        return options;
+    }
 
 }

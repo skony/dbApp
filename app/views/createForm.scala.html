@@ -1,0 +1,34 @@
+@(courseForm: Form[Course])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+@main {
+    
+    <h1>Add a course</h1>
+    
+    @form(routes.Application.save()) {
+        
+        <fieldset>
+        
+            @inputText(courseForm("name"), '_label -> "Course name")
+            @select(
+                courseForm("professor.name"), 
+                options(Professor.options), 
+                '_label -> "Professor", '_default -> "-- Choose professor --",
+                '_showConstraints -> false
+            )
+            @inputText(courseForm("students_limit"), '_label -> "Students limit")
+            
+
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Create this course" class="btn primary"> or 
+            <a href="@routes.Application.index()" class="btn">Cancel</a> 
+        </div>
+        
+    }
+    
+}
