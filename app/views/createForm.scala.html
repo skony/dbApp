@@ -14,7 +14,7 @@
         
             @inputText(courseForm("name"), '_label -> "Course name")
             @select(
-                courseForm("professor.name"), 
+                courseForm("professor.email"), 
                 options(Professor.options), 
                 '_label -> "Professor", '_default -> "-- Choose professor --",
                 '_showConstraints -> false

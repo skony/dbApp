@@ -42,7 +42,7 @@ Seq[Any](format.raw/*1.28*/("""
         
             """),_display_(Seq[Any](/*15.14*/inputText(courseForm("name"), '_label -> "Course name"))),format.raw/*15.69*/("""
             """),_display_(Seq[Any](/*16.14*/select(
-                courseForm("professor.name"), 
+                courseForm("professor.email"), 
                 options(Professor.options), 
                 '_label -> "Professor", '_default -> "-- Choose professor --",
                 '_showConstraints -> false
@@ -71,10 +71,10 @@ Seq[Any](format.raw/*1.28*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Thu Jan 30 00:32:15 CET 2014
+                    DATE: Thu Jan 30 20:22:09 CET 2014
                     SOURCE: /home/piotrek/Kodzenie/db/app/views/createForm.scala.html
-                    HASH: 2e8545770246d105463f3288e0ec6cbdc3c47d68
-                    MATRIX: 785->1|913->48|945->72|1029->27|1057->46|1085->126|1123->130|1134->134|1172->136|1249->178|1289->209|1329->211|1416->262|1493->317|1543->331|1800->566|1850->580|1940->648|2157->829|2172->835|2214->855|2300->910
+                    HASH: 956b972f7dbee3d3c1f0e5ccb21c90abb8748134
+                    MATRIX: 785->1|913->48|945->72|1029->27|1057->46|1085->126|1123->130|1134->134|1172->136|1249->178|1289->209|1329->211|1416->262|1493->317|1543->331|1801->567|1851->581|1941->649|2158->830|2173->836|2215->856|2301->911
                     LINES: 26->1|29->5|29->5|30->1|32->4|33->5|35->7|35->7|35->7|39->11|39->11|39->11|43->15|43->15|44->16|49->21|50->22|50->22|57->29|57->29|57->29|60->32
                     -- GENERATED --
                 */
