@@ -1,6 +1,6 @@
 # Users
 
-- !!models.User
+- !!models.Student
     email:      bob3@gmail.com
     name:       Bob
     password:   secret

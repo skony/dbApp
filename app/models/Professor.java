@@ -11,7 +11,8 @@ import play.db.ebean.Model.Finder;
 import com.avaje.ebean.*;
 
 @Entity
-public class Professor extends User {
+@DiscriminatorValue("professor")
+public class Professor extends Person {
 	
 	public static Finder<String,Professor> find = new Finder<String,Professor>(
 		        String.class, Professor.class

@@ -12,7 +12,8 @@ import play.db.ebean.*;
 import com.avaje.ebean.*;
 
 @Entity
-public abstract class User extends Model {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public abstract class Person extends Model {
 
 	@Id
     @Constraints.Required
@@ -25,18 +26,18 @@ public abstract class User extends Model {
     @Constraints.Required
     public String password;
     
-    public static User authenticate(String email, String password) {
+    public static Person authenticate(String email, String password) {
         return find.where().eq("email", email)
             .eq("password", password).findUnique();
     }
 
-    public static Finder<String,User> find = new Finder<String,User>(
-        String.class, User.class
+    public static Finder<String,Person> find = new Finder<String,Person>(
+        String.class, Person.class
     );
     
     public static Map<String,String> options() {
         LinkedHashMap<String,String> options = new LinkedHashMap<String,String>();
-        for(User u: User.find.orderBy("name").findList()) {
+        for(Person u: Person.find.orderBy("name").findList()) {
             options.put(u.email, u.name);
         }
         return options;

@@ -8,7 +8,8 @@ import play.db.ebean.Model.Finder;
 import com.avaje.ebean.*;
 
 @Entity
-public class Dean extends User {
+@DiscriminatorValue("dean")
+public class Dean extends Person {
 	
 
 

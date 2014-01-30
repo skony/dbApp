@@ -4,7 +4,7 @@ import static play.data.Form.form;
 import models.Course;
 import models.Dean;
 import models.Student;
-import models.User;
+import models.Person;
 import play.*;
 import play.data.Form;
 import play.mvc.*;
@@ -33,7 +33,7 @@ public class Application extends Controller {
         public String password;
         
         public String validate() {
-            if (User.authenticate(email, password) == null) {
+            if (Person.authenticate(email, password) == null) {
               return "Invalid user or password";
             }
             return null;

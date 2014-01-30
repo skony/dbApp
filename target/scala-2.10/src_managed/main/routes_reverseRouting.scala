@@ -1,6 +1,6 @@
 // @SOURCE:/home/piotrek/Kodzenie/db/conf/routes
 // @HASH:d7ad93265b544576a66ea39ddf723627466493be
-// @DATE:Thu Jan 30 00:14:16 CET 2014
+// @DATE:Thu Jan 30 00:32:15 CET 2014
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
