@@ -6,6 +6,7 @@
 GET     /                           controllers.Application.index()
 GET     /login                      controllers.Application.login()
 POST    /login                      controllers.Application.authenticate()
+GET     /logout                     controllers.Application.logout()
 
 # Courses list (look at the default values for pagination parameters)
 GET     /courses                  controllers.Application.list(p:Int ?= 0, s ?= "name", o ?= "asc", f ?= "")
