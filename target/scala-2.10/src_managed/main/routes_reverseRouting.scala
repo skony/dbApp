@@ -1,6 +1,6 @@
 // @SOURCE:/home/piotrek/Kodzenie/db/conf/routes
-// @HASH:3661c411a1fa82de3e6cd78d0ebcc9c98f7864a6
-// @DATE:Sun Mar 09 18:43:04 CET 2014
+// @HASH:ec50ce6bc832e6828117df10edd62b4e3981d3a1
+// @DATE:Sun Mar 09 20:33:52 CET 2014
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -61,8 +61,8 @@ def create(): Call = {
                                                 
 
 // @LINE:12
-def list(p:Int = 0, s:String = "name", o:String = "asc", f:String = ""): Call = {
-   Call("GET", _prefix + { _defaultPrefix } + "courses" + queryString(List(if(p == 0) None else Some(implicitly[QueryStringBindable[Int]].unbind("p", p)), if(s == "name") None else Some(implicitly[QueryStringBindable[String]].unbind("s", s)), if(o == "asc") None else Some(implicitly[QueryStringBindable[String]].unbind("o", o)), if(f == "") None else Some(implicitly[QueryStringBindable[String]].unbind("f", f)))))
+def list(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "courses")
 }
                                                 
 
@@ -190,8 +190,8 @@ def create : JavascriptReverseRoute = JavascriptReverseRoute(
 def list : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Courses.list",
    """
-      function(p,s,o,f) {
-      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "courses" + _qS([(p == null ? null : (""" + implicitly[QueryStringBindable[Int]].javascriptUnbind + """)("p", p)), (s == null ? null : (""" + implicitly[QueryStringBindable[String]].javascriptUnbind + """)("s", s)), (o == null ? null : (""" + implicitly[QueryStringBindable[String]].javascriptUnbind + """)("o", o)), (f == null ? null : (""" + implicitly[QueryStringBindable[String]].javascriptUnbind + """)("f", f))])})
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "courses"})
       }
    """
 )
@@ -339,8 +339,8 @@ def create(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
                       
 
 // @LINE:12
-def list(p:Int, s:String, o:String, f:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Courses.list(p, s, o, f), HandlerDef(this, "controllers.Courses", "list", Seq(classOf[Int], classOf[String], classOf[String], classOf[String]), "GET", """ Courses list (look at the default values for pagination parameters)""", _prefix + """courses""")
+def list(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Courses.list(), HandlerDef(this, "controllers.Courses", "list", Seq(), "GET", """ Courses list (look at the default values for pagination parameters)""", _prefix + """courses""")
 )
                       
 

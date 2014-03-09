@@ -66,7 +66,7 @@ Seq[Any](format.raw/*1.17*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Thu Jan 30 21:16:29 CET 2014
+                    DATE: Sun Mar 09 20:33:52 CET 2014
                     SOURCE: /home/piotrek/Kodzenie/db/app/views/main.scala.html
                     HASH: ffd8253c07ef4a6f3f4a5b47ba342fa20e9de580
                     MATRIX: 771->1|880->16|1052->153|1066->159|1131->202|1239->275|1253->281|1309->315|1469->439|1484->445|1526->465|1673->576|1688->582|1731->603|1901->737|1930->744

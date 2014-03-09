@@ -14,7 +14,7 @@ public class Application extends Controller {
       //  return ok(index.render("Your new application is ready."));
    // }
     public static Result GO_HOME = redirect(
-            routes.Courses.list(0, "name", "asc", "")
+            routes.Courses.list()
         );
     
     public static Result index() {

@@ -2,6 +2,7 @@ package controllers;
 
 import static play.data.Form.form;
 import models.Course;
+import models.Person;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -30,13 +31,12 @@ public class Courses extends Controller {
 	    return Application.GO_HOME;
 	}
 
-	public static Result list(int page, String sortBy, String order, String filter) {
-	    return ok(
-	        list.render(
-	            Course.page(page, 10, sortBy, order, filter),
-	            sortBy, order, filter
-	        )
-	    );
+	public static Result list() {
+		return ok(
+	            list.render(
+	                Course.findInvolving(request().username())
+	            )
+	        );
 	}
 
 	public static Result edit(String name) {
