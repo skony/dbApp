@@ -1,4 +1,4 @@
-@(courses: List[Course])
+@(courses: List[Course], user: String)
 
 @**********************************
 * Helper generating table headers *
@@ -15,10 +15,11 @@
             <strong>Done!</strong> @flash.get("success")
         </div>
     } 
-
+	@if(user == "dean"){
     <div id="actions">     
         <a class="btn success" id="add" href="@routes.Courses.create()">Add a new course</a>      
     </div>
+    }
     {
         
         <table class="computers zebra-striped">

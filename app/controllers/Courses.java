@@ -37,7 +37,8 @@ public class Courses extends Controller {
 		{
 			return ok(
 		            list.render(
-		                Course.findAll()
+		                Course.findAll(), 
+		                "dean"
 		            )
 		        );
 		}
@@ -45,7 +46,8 @@ public class Courses extends Controller {
 		{
 			return ok(
 		            list.render(
-		                Course.findInvolving(request().username())
+		                Course.findInvolving(request().username()),
+		                "professor"
 		            )
 		        );
 		}
