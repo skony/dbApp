@@ -41,7 +41,13 @@ public class Course extends Model {
 	
 	public static Finder<String,Course> find = new Finder<String,Course>(
 	        String.class, Course.class
-	    ); 
+	    );
+	
+	public static List<Course> findInvolving(String user) {
+        return find.where()
+            .eq("professor.email", user)
+            .findList();
+    }
 	
 	public static Page<Course> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
@@ -53,4 +59,11 @@ public class Course extends Model {
                 .setFetchAhead(false)
                 .getPage(page);
     }
+	
+	 public static boolean isOwner(String course, String professor) {
+	        return find.where()
+	            .eq("professor.email", professor)
+	            .eq("name", course)
+	            .findRowCount() > 0;
+	    }
 }

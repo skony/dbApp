@@ -22,7 +22,7 @@
     }
     
     // Generate the link
-    routes.Application.list(newPage, sortBy, order, currentFilter)
+    routes.Courses.list(newPage, sortBy, order, currentFilter)
     
 }
 
@@ -52,7 +52,7 @@
             <input type="submit" id="searchsubmit" value="Filter by name" class="btn primary">
         </form>
         
-        <a class="btn success" id="add" href="@routes.Application.create()">Add a new course</a>
+        <a class="btn success" id="add" href="@routes.Courses.create()">Add a new course</a>
         
     </div>
     
@@ -76,7 +76,7 @@
 
                 @for(course <- currentPage.getList) {
                     <tr>
-                        <td><a href="@routes.Application.edit(course.name)">@course.name</a></td>
+                        <td><a href="@routes.Courses.edit(course.name)">@course.name</a></td>
                         <td>
                                 @course.professor.name
                         </td>

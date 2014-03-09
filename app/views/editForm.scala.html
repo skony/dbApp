@@ -8,7 +8,7 @@
     
     <h1>Edit course</h1>
     
-    @form(routes.Application.update(name)) {
+    @form(routes.Courses.update(name)) {
         
         <fieldset>
         
@@ -26,12 +26,12 @@
         
         <div class="actions">
             <input type="submit" value="Save this course" class="btn primary"> or 
-            <a href="@routes.Application.list()" class="btn">Cancel</a> 
+            <a href="@routes.Courses.list()" class="btn">Cancel</a> 
         </div>
         
     }
     
-    @form(routes.Application.delete(name), 'class -> "topRight") {
+    @form(routes.Courses.delete(name), 'class -> "topRight") {
         <input type="submit" value="Delete this course" class="btn danger">
     }
     

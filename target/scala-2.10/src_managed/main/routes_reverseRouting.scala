@@ -1,6 +1,6 @@
 // @SOURCE:/home/piotrek/Kodzenie/db/conf/routes
-// @HASH:a505a0b8a2d36cea083bb36657f910634ca09cc4
-// @DATE:Thu Jan 30 21:08:26 CET 2014
+// @HASH:3661c411a1fa82de3e6cd78d0ebcc9c98f7864a6
+// @DATE:Sun Mar 09 18:43:04 CET 2014
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -45,11 +45,7 @@ def at(file:String): Call = {
 // @LINE:16
 // @LINE:15
 // @LINE:12
-// @LINE:9
-// @LINE:8
-// @LINE:7
-// @LINE:6
-class ReverseApplication {
+class ReverseCourses {
     
 
 // @LINE:19
@@ -61,12 +57,6 @@ def edit(name:String): Call = {
 // @LINE:15
 def create(): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "courses/new")
-}
-                                                
-
-// @LINE:9
-def logout(): Call = {
-   Call("GET", _prefix + { _defaultPrefix } + "logout")
 }
                                                 
 
@@ -93,16 +83,32 @@ def update(name:String): Call = {
    Call("POST", _prefix + { _defaultPrefix } + "courses/" + implicitly[PathBindable[String]].unbind("name", dynamicString(name)))
 }
                                                 
+    
+}
+                          
 
+// @LINE:9
 // @LINE:8
-def authenticate(): Call = {
-   Call("POST", _prefix + { _defaultPrefix } + "login")
+// @LINE:7
+// @LINE:6
+class ReverseApplication {
+    
+
+// @LINE:9
+def logout(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "logout")
 }
                                                 
 
 // @LINE:6
 def index(): Call = {
    Call("GET", _prefix)
+}
+                                                
+
+// @LINE:8
+def authenticate(): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "login")
 }
                                                 
 
@@ -155,16 +161,12 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 // @LINE:16
 // @LINE:15
 // @LINE:12
-// @LINE:9
-// @LINE:8
-// @LINE:7
-// @LINE:6
-class ReverseApplication {
+class ReverseCourses {
     
 
 // @LINE:19
 def edit : JavascriptReverseRoute = JavascriptReverseRoute(
-   "controllers.Application.edit",
+   "controllers.Courses.edit",
    """
       function(name) {
       return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "courses/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("name", encodeURIComponent(name))})
@@ -175,7 +177,7 @@ def edit : JavascriptReverseRoute = JavascriptReverseRoute(
 
 // @LINE:15
 def create : JavascriptReverseRoute = JavascriptReverseRoute(
-   "controllers.Application.create",
+   "controllers.Courses.create",
    """
       function() {
       return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "courses/new"})
@@ -183,6 +185,60 @@ def create : JavascriptReverseRoute = JavascriptReverseRoute(
    """
 )
                         
+
+// @LINE:12
+def list : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Courses.list",
+   """
+      function(p,s,o,f) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "courses" + _qS([(p == null ? null : (""" + implicitly[QueryStringBindable[Int]].javascriptUnbind + """)("p", p)), (s == null ? null : (""" + implicitly[QueryStringBindable[String]].javascriptUnbind + """)("s", s)), (o == null ? null : (""" + implicitly[QueryStringBindable[String]].javascriptUnbind + """)("o", o)), (f == null ? null : (""" + implicitly[QueryStringBindable[String]].javascriptUnbind + """)("f", f))])})
+      }
+   """
+)
+                        
+
+// @LINE:23
+def delete : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Courses.delete",
+   """
+      function(name) {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "courses/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("name", encodeURIComponent(name)) + "/delete"})
+      }
+   """
+)
+                        
+
+// @LINE:16
+def save : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Courses.save",
+   """
+      function() {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "courses"})
+      }
+   """
+)
+                        
+
+// @LINE:20
+def update : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Courses.update",
+   """
+      function(name) {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "courses/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("name", encodeURIComponent(name))})
+      }
+   """
+)
+                        
+    
+}
+              
+
+// @LINE:9
+// @LINE:8
+// @LINE:7
+// @LINE:6
+class ReverseApplication {
+    
 
 // @LINE:9
 def logout : JavascriptReverseRoute = JavascriptReverseRoute(
@@ -195,45 +251,12 @@ def logout : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:12
-def list : JavascriptReverseRoute = JavascriptReverseRoute(
-   "controllers.Application.list",
-   """
-      function(p,s,o,f) {
-      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "courses" + _qS([(p == null ? null : (""" + implicitly[QueryStringBindable[Int]].javascriptUnbind + """)("p", p)), (s == null ? null : (""" + implicitly[QueryStringBindable[String]].javascriptUnbind + """)("s", s)), (o == null ? null : (""" + implicitly[QueryStringBindable[String]].javascriptUnbind + """)("o", o)), (f == null ? null : (""" + implicitly[QueryStringBindable[String]].javascriptUnbind + """)("f", f))])})
-      }
-   """
-)
-                        
-
-// @LINE:23
-def delete : JavascriptReverseRoute = JavascriptReverseRoute(
-   "controllers.Application.delete",
-   """
-      function(name) {
-      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "courses/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("name", encodeURIComponent(name)) + "/delete"})
-      }
-   """
-)
-                        
-
-// @LINE:16
-def save : JavascriptReverseRoute = JavascriptReverseRoute(
-   "controllers.Application.save",
+// @LINE:6
+def index : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Application.index",
    """
       function() {
-      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "courses"})
-      }
-   """
-)
-                        
-
-// @LINE:20
-def update : JavascriptReverseRoute = JavascriptReverseRoute(
-   "controllers.Application.update",
-   """
-      function(name) {
-      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "courses/" + (""" + implicitly[PathBindable[String]].javascriptUnbind + """)("name", encodeURIComponent(name))})
+      return _wA({method:"GET", url:"""" + _prefix + """"})
       }
    """
 )
@@ -245,17 +268,6 @@ def authenticate : JavascriptReverseRoute = JavascriptReverseRoute(
    """
       function() {
       return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "login"})
-      }
-   """
-)
-                        
-
-// @LINE:6
-def index : JavascriptReverseRoute = JavascriptReverseRoute(
-   "controllers.Application.index",
-   """
-      function() {
-      return _wA({method:"GET", url:"""" + _prefix + """"})
       }
    """
 )
@@ -311,6 +323,48 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 // @LINE:16
 // @LINE:15
 // @LINE:12
+class ReverseCourses {
+    
+
+// @LINE:19
+def edit(name:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Courses.edit(name), HandlerDef(this, "controllers.Courses", "edit", Seq(classOf[String]), "GET", """ Edit existing course""", _prefix + """courses/$name<[^/]+>""")
+)
+                      
+
+// @LINE:15
+def create(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Courses.create(), HandlerDef(this, "controllers.Courses", "create", Seq(), "GET", """ Add course""", _prefix + """courses/new""")
+)
+                      
+
+// @LINE:12
+def list(p:Int, s:String, o:String, f:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Courses.list(p, s, o, f), HandlerDef(this, "controllers.Courses", "list", Seq(classOf[Int], classOf[String], classOf[String], classOf[String]), "GET", """ Courses list (look at the default values for pagination parameters)""", _prefix + """courses""")
+)
+                      
+
+// @LINE:23
+def delete(name:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Courses.delete(name), HandlerDef(this, "controllers.Courses", "delete", Seq(classOf[String]), "POST", """ Delete a course""", _prefix + """courses/$name<[^/]+>/delete""")
+)
+                      
+
+// @LINE:16
+def save(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Courses.save(), HandlerDef(this, "controllers.Courses", "save", Seq(), "POST", """""", _prefix + """courses""")
+)
+                      
+
+// @LINE:20
+def update(name:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Courses.update(name), HandlerDef(this, "controllers.Courses", "update", Seq(classOf[String]), "POST", """""", _prefix + """courses/$name<[^/]+>""")
+)
+                      
+    
+}
+                          
+
 // @LINE:9
 // @LINE:8
 // @LINE:7
@@ -318,57 +372,21 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 class ReverseApplication {
     
 
-// @LINE:19
-def edit(name:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.edit(name), HandlerDef(this, "controllers.Application", "edit", Seq(classOf[String]), "GET", """ Edit existing course""", _prefix + """courses/$name<[^/]+>""")
-)
-                      
-
-// @LINE:15
-def create(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.create(), HandlerDef(this, "controllers.Application", "create", Seq(), "GET", """ Add course""", _prefix + """courses/new""")
-)
-                      
-
 // @LINE:9
 def logout(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.logout(), HandlerDef(this, "controllers.Application", "logout", Seq(), "GET", """""", _prefix + """logout""")
 )
                       
 
-// @LINE:12
-def list(p:Int, s:String, o:String, f:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.list(p, s, o, f), HandlerDef(this, "controllers.Application", "list", Seq(classOf[Int], classOf[String], classOf[String], classOf[String]), "GET", """ Courses list (look at the default values for pagination parameters)""", _prefix + """courses""")
-)
-                      
-
-// @LINE:23
-def delete(name:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.delete(name), HandlerDef(this, "controllers.Application", "delete", Seq(classOf[String]), "POST", """ Delete a course""", _prefix + """courses/$name<[^/]+>/delete""")
-)
-                      
-
-// @LINE:16
-def save(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.save(), HandlerDef(this, "controllers.Application", "save", Seq(), "POST", """""", _prefix + """courses""")
-)
-                      
-
-// @LINE:20
-def update(name:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.update(name), HandlerDef(this, "controllers.Application", "update", Seq(classOf[String]), "POST", """""", _prefix + """courses/$name<[^/]+>""")
+// @LINE:6
+def index(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Application.index(), HandlerDef(this, "controllers.Application", "index", Seq(), "GET", """ Home page""", _prefix + """""")
 )
                       
 
 // @LINE:8
 def authenticate(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Application.authenticate(), HandlerDef(this, "controllers.Application", "authenticate", Seq(), "POST", """""", _prefix + """login""")
-)
-                      
-
-// @LINE:6
-def index(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Application.index(), HandlerDef(this, "controllers.Application", "index", Seq(), "GET", """ Home page""", _prefix + """""")
 )
                       
 
