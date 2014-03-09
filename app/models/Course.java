@@ -49,6 +49,11 @@ public class Course extends Model {
             .findList();
     }
 	
+	public static List<Course> findAll()
+	{
+		return find.findList();
+	}
+	
 	public static Page<Course> page(int page, int pageSize, String sortBy, String order, String filter) {
         return 
             find.where()

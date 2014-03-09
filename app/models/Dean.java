@@ -11,6 +11,11 @@ import com.avaje.ebean.*;
 @DiscriminatorValue("dean")
 public class Dean extends Person {
 	
-
-
+	public static boolean isDean(String user)
+	{
+		if(!find.where().eq("email", user).eq("dtype", "dean").findList().isEmpty())
+			return true;
+		else
+			return false;	
+	}
 }

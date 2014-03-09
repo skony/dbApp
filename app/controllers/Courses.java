@@ -2,6 +2,7 @@ package controllers;
 
 import static play.data.Form.form;
 import models.Course;
+import models.Dean;
 import models.Person;
 import play.data.Form;
 import play.mvc.Controller;
@@ -32,11 +33,22 @@ public class Courses extends Controller {
 	}
 
 	public static Result list() {
-		return ok(
-	            list.render(
-	                Course.findInvolving(request().username())
-	            )
-	        );
+		if(Dean.isDean(request().username()))
+		{
+			return ok(
+		            list.render(
+		                Course.findAll()
+		            )
+		        );
+		}
+		else
+		{
+			return ok(
+		            list.render(
+		                Course.findInvolving(request().username())
+		            )
+		        );
+		}
 	}
 
 	public static Result edit(String name) {
