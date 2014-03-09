@@ -20,14 +20,14 @@
         <a class="btn success" id="add" href="@routes.Courses.create()">Add a new course</a>      
     </div>
     }
-    {
+    
         
         <table class="computers zebra-striped">
             <thead>
                 <tr>
-                    @header("name", "Course name")
-                    @header("professor.name", "Professor")
-                    @header("students_limit", "Students limit")
+                    <td>Course name</td>
+                    <td>Professor</td>
+                    <td>Students limit</td>
                 </tr>
             </thead>
             <tbody>
@@ -47,7 +47,7 @@
             </tbody>
         </table>
         
-    }
+    
         
 }
 
