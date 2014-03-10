@@ -18,6 +18,12 @@ create table person (
   constraint pk_person primary key (email))
 ;
 
+
+create table course_person (
+  course_name                    varchar(255) not null,
+  person_email                   varchar(255) not null,
+  constraint pk_course_person primary key (course_name, person_email))
+;
 create sequence course_seq;
 
 create sequence person_seq;
@@ -27,9 +33,15 @@ create index ix_course_professor_1 on course (professor_email);
 
 
 
+alter table course_person add constraint fk_course_person_course_01 foreign key (course_name) references course (name);
+
+alter table course_person add constraint fk_course_person_person_02 foreign key (person_email) references person (email);
+
 # --- !Downs
 
 drop table if exists course cascade;
+
+drop table if exists course_person cascade;
 
 drop table if exists person cascade;
 

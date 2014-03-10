@@ -1,5 +1,7 @@
 package models;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 import play.db.ebean.*;
@@ -11,5 +13,19 @@ import com.avaje.ebean.*;
 @DiscriminatorValue("student")
 public class Student extends Person {
 	
-
+	public static boolean isStudent(String user)
+	{
+		if(!find.where().eq("email", user).eq("dtype", "student").findList().isEmpty())
+			return true;
+		else
+			return false;	
+	}
+	
+	public static Person findByEmail(String email)
+	{
+		return find
+				.where()
+				.eq("email", email)
+				.findUnique();
+	}
 }

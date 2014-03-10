@@ -37,7 +37,7 @@
                     	@if(user == "dean"){
                         <td><a href="@routes.Courses.edit(course.name)">@course.name</a></td>
                         }
-                        @if(user == "professor"){
+                        @if(user == "professor" || user == "student"){
                         <td>@course.name</td>
                         }
                         <td>

@@ -29,8 +29,8 @@ public class Course extends Model {
 	public int students_limit;
 	//@Constraints.Required
 	//public String selection;
-	//@ManyToMany
-	//public Map<Student, String> participants = new HashMap<Student, String>();
+	@ManyToMany
+	public List<Student> participants ;//= new ArrayList<Student>();
 	/*
 	public Kurs(String name, int students_limit, String selection, Profesor profesor) {
 		this.name = name;
@@ -52,6 +52,13 @@ public class Course extends Model {
 	public static List<Course> findAll()
 	{
 		return find.findList();
+	}
+	
+	public static List<Course> findStudentsCourses(String student)
+	{		
+		return find.where()
+				.eq("participants.email", student)
+				.findList();
 	}
 	
 	public static Page<Course> page(int page, int pageSize, String sortBy, String order, String filter) {

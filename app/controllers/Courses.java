@@ -4,6 +4,8 @@ import static play.data.Form.form;
 import models.Course;
 import models.Dean;
 import models.Person;
+import models.Professor;
+import models.Student;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -42,7 +44,7 @@ public class Courses extends Controller {
 		            )
 		        );
 		}
-		else
+		else if(Professor.isProfessor(request().username()))
 		{
 			return ok(
 		            list.render(
@@ -51,6 +53,17 @@ public class Courses extends Controller {
 		            )
 		        );
 		}
+		else if(Student.isStudent(request().username()))
+		{
+			return ok(
+		            list.render(
+		                Course.findStudentsCourses(request().username()),
+		                "student"
+		            )
+		        );
+		}
+		
+		return null;
 	}
 
 	public static Result edit(String name) {
