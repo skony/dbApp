@@ -1,6 +1,6 @@
 // @SOURCE:/home/piotrek/Kodzenie/db/conf/routes
-// @HASH:d7def7f316ae28663ed29ead58f15206fdf5aa5e
-// @DATE:Tue Mar 11 07:36:31 CET 2014
+// @HASH:ee3ab42f92ab23a4d10a8d5ddd6c15250fd48d9d
+// @DATE:Tue Mar 11 10:48:27 CET 2014
 
 
 import play.core._
@@ -61,7 +61,7 @@ private[this] lazy val controllers_Courses_signUp7 = Route("GET", PathPattern(Li
         
 
 // @LINE:20
-private[this] lazy val controllers_Courses_addParticipant8 = Route("POST", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("courses/sign"))))
+private[this] lazy val controllers_Courses_addParticipant8 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("courses/signup"))))
         
 
 // @LINE:23
@@ -79,7 +79,7 @@ private[this] lazy val controllers_Courses_delete11 = Route("POST", PathPattern(
 // @LINE:30
 private[this] lazy val controllers_Assets_at12 = Route("GET", PathPattern(List(StaticPart(Routes.prefix),StaticPart(Routes.defaultPrefix),StaticPart("assets/"),DynamicPart("file", """.+""",false))))
         
-def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Application.login()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Application.authenticate()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """logout""","""controllers.Application.logout()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """courses""","""controllers.Courses.list()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """courses/new""","""controllers.Courses.create()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """courses""","""controllers.Courses.save()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """courses/sign""","""controllers.Courses.signUp()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """courses/sign""","""controllers.Courses.addParticipant(name:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """courses/$name<[^/]+>""","""controllers.Courses.edit(name:String)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """courses/$name<[^/]+>""","""controllers.Courses.update(name:String)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """courses/$name<[^/]+>/delete""","""controllers.Courses.delete(name:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
+def documentation = List(("""GET""", prefix,"""controllers.Application.index()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Application.login()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """login""","""controllers.Application.authenticate()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """logout""","""controllers.Application.logout()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """courses""","""controllers.Courses.list()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """courses/new""","""controllers.Courses.create()"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """courses""","""controllers.Courses.save()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """courses/sign""","""controllers.Courses.signUp()"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """courses/signup""","""controllers.Courses.addParticipant(user:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """courses/$name<[^/]+>""","""controllers.Courses.edit(name:String)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """courses/$name<[^/]+>""","""controllers.Courses.update(name:String)"""),("""POST""", prefix + (if(prefix.endsWith("/")) "" else "/") + """courses/$name<[^/]+>/delete""","""controllers.Courses.delete(name:String)"""),("""GET""", prefix + (if(prefix.endsWith("/")) "" else "/") + """assets/$file<.+>""","""controllers.Assets.at(path:String = "/public", file:String)""")).foldLeft(List.empty[(String,String,String)]) { (s,e) => e.asInstanceOf[Any] match {
   case r @ (_,_,_) => s :+ r.asInstanceOf[(String,String,String)]
   case l => s ++ l.asInstanceOf[List[(String,String,String)]] 
 }}
@@ -153,8 +153,8 @@ case controllers_Courses_signUp7(params) => {
 
 // @LINE:20
 case controllers_Courses_addParticipant8(params) => {
-   call(params.fromQuery[String]("name", None)) { (name) =>
-        invokeHandler(controllers.Courses.addParticipant(name), HandlerDef(this, "controllers.Courses", "addParticipant", Seq(classOf[String]),"POST", """""", Routes.prefix + """courses/sign"""))
+   call(params.fromQuery[String]("user", None)) { (user) =>
+        invokeHandler(controllers.Courses.addParticipant(user), HandlerDef(this, "controllers.Courses", "addParticipant", Seq(classOf[String]),"GET", """""", Routes.prefix + """courses/signup"""))
    }
 }
         

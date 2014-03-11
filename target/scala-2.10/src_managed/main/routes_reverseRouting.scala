@@ -1,6 +1,6 @@
 // @SOURCE:/home/piotrek/Kodzenie/db/conf/routes
-// @HASH:d7def7f316ae28663ed29ead58f15206fdf5aa5e
-// @DATE:Tue Mar 11 07:36:31 CET 2014
+// @HASH:ee3ab42f92ab23a4d10a8d5ddd6c15250fd48d9d
+// @DATE:Tue Mar 11 10:48:27 CET 2014
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -59,8 +59,8 @@ def signUp(): Call = {
                                                 
 
 // @LINE:20
-def addParticipant(name:String): Call = {
-   Call("POST", _prefix + { _defaultPrefix } + "courses/sign" + queryString(List(Some(implicitly[QueryStringBindable[String]].unbind("name", name)))))
+def addParticipant(user:String): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "courses/signup" + queryString(List(Some(implicitly[QueryStringBindable[String]].unbind("user", user)))))
 }
                                                 
 
@@ -199,8 +199,8 @@ def signUp : JavascriptReverseRoute = JavascriptReverseRoute(
 def addParticipant : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Courses.addParticipant",
    """
-      function(name) {
-      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "courses/sign" + _qS([(""" + implicitly[QueryStringBindable[String]].javascriptUnbind + """)("name", name)])})
+      function(user) {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "courses/signup" + _qS([(""" + implicitly[QueryStringBindable[String]].javascriptUnbind + """)("user", user)])})
       }
    """
 )
@@ -379,8 +379,8 @@ def signUp(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
                       
 
 // @LINE:20
-def addParticipant(name:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
-   controllers.Courses.addParticipant(name), HandlerDef(this, "controllers.Courses", "addParticipant", Seq(classOf[String]), "POST", """""", _prefix + """courses/sign""")
+def addParticipant(user:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Courses.addParticipant(user), HandlerDef(this, "controllers.Courses", "addParticipant", Seq(classOf[String]), "GET", """""", _prefix + """courses/signup""")
 )
                       
 

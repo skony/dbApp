@@ -11,6 +11,7 @@ import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Page;
 import com.avaje.ebean.SqlUpdate;
 
+import play.Logger;
 import play.data.format.Formats;
 import play.data.validation.Constraints;
 import play.db.ebean.Model;
@@ -19,6 +20,8 @@ import play.db.ebean.Model.Finder;
 
 @Entity
 public class Course extends Model {
+	
+	//Logger log = new Logger();
 	
 	@Id
     @Constraints.Required
@@ -57,7 +60,7 @@ public class Course extends Model {
 	}
 	
 	public static List<Course> findStudentsCourses(String student)
-	{		
+	{	
 		return find.where()
 				.eq("participants.email", student)
 				.findList();
@@ -81,14 +84,14 @@ public class Course extends Model {
 	            .findRowCount() > 0;
 	    }
 	 
-	 public static void addParticipant(String name, String user){
-		 //Course course = find.where().eq("name", name).findUnique();
-		 String suser = "pskonieczny@gmail.com";
-		 String sname = "Systemy baz danych";
-		 String query = "INSERT INTO course_person VALUES ('" + sname + "', '" + suser + "')";
-		 SqlUpdate insert = Ebean.createSqlUpdate(query);
-		 insert.execute(); 
-	 }
+	 public static void addParticipant(String course, String student) {
+		 	Logger.debug(course + " " + student);
+	        Course c = Course.find.setId(course).fetch("participants", "email").findUnique();
+	        c.participants.add(
+	            (Student)Student.find.ref(student)
+	        );
+	        c.saveManyToManyAssociations("participants");
+	    }
 	 
 	 public static void update(String name, Course course)
 	 {

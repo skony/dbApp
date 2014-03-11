@@ -6,6 +6,7 @@ import models.Dean;
 import models.Person;
 import models.Professor;
 import models.Student;
+import play.Logger;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -107,9 +108,13 @@ public class Courses extends Controller {
 		);
 	}
 	
-	public static Result addParticipant(String s) {
-		Course.addParticipant(s, request().username());
-		return Application.GO_HOME;
-	}
+	public static Result addParticipant(String course) {
+		Logger.debug("Courses:" + course);
+        Course.addParticipant(
+           course,
+           request().username()
+         );
+        return Application.GO_HOME;
+    }
 
 }

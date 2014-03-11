@@ -18,6 +18,7 @@ public class Application extends Controller {
         );
     
     public static Result index() {
+    	Logger.debug("index:");
         return GO_HOME;
     }
 	

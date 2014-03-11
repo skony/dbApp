@@ -13,11 +13,11 @@ GET     /courses                  	controllers.Courses.list()
 
 # Add course
 GET     /courses/new              	controllers.Courses.create()
-POST    /courses                  	controllers.Courses.save()
+POST    /courses	                controllers.Courses.save()
 
 #SignUp to course
 GET		/courses/sign				controllers.Courses.signUp()
-POST	/courses/sign					controllers.Courses.addParticipant(name:String)
+GET		/courses/signup					controllers.Courses.addParticipant(user:String)
 
 # Edit existing course
 GET     /courses/:name              controllers.Courses.edit(name:String)
