@@ -1,18 +1,15 @@
-2014-03-11 10:48:33,386 - [INFO] - from play in pool-149-thread-3 
+2014-03-11 12:27:12,767 - [INFO] - from play in pool-63-thread-4 
 Listening for HTTP on /0:0:0:0:0:0:0:0:9000
 
-2014-03-11 10:48:38,079 - [INFO] - from play in play-internal-execution-context-1 
+2014-03-11 12:27:19,526 - [INFO] - from play in play-internal-execution-context-1 
 database [default] connected at jdbc:postgresql://localhost/newdb
 
-2014-03-11 10:48:38,700 - [INFO] - from play in play-internal-execution-context-1 
+2014-03-11 12:27:20,107 - [INFO] - from play in play-internal-execution-context-1 
 Application started (Dev)
 
-2014-03-11 10:48:39,170 - [DEBUG] - from application in play-akka.actor.default-dispatcher-6 
-index:
+2014-03-11 12:27:29,222 - [DEBUG] - from application in play-akka.actor.default-dispatcher-3 
+1
 
-2014-03-11 10:48:42,165 - [DEBUG] - from application in play-akka.actor.default-dispatcher-2 
-Courses:Systemy baz danych
-
-2014-03-11 10:48:42,166 - [DEBUG] - from application in play-akka.actor.default-dispatcher-2 
-Systemy baz danych pskonieczny@gmail.com
+2014-03-11 12:27:29,223 - [DEBUG] - from application in play-akka.actor.default-dispatcher-3 
+2
 

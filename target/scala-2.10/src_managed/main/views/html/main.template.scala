@@ -40,7 +40,7 @@ Seq[Any](format.raw/*1.17*/("""
         <header class="topbar">
             <h1 class="fill">
                 <a href=""""),_display_(Seq[Any](/*14.27*/routes/*14.33*/.Application.index())),format.raw/*14.53*/("""">
-                    Play sample application &mdash; E-studia
+                    Data base application &mdash; E-university
                 </a>
                 <a href=""""),_display_(Seq[Any](/*17.27*/routes/*17.33*/.Application.logout())),format.raw/*17.54*/("""">
                 	Logout
@@ -66,10 +66,10 @@ Seq[Any](format.raw/*1.17*/("""
 }
                 /*
                     -- GENERATED --
-                    DATE: Mon Mar 10 00:37:14 CET 2014
+                    DATE: Tue Mar 11 11:04:34 CET 2014
                     SOURCE: /home/piotrek/Kodzenie/db/app/views/main.scala.html
-                    HASH: ffd8253c07ef4a6f3f4a5b47ba342fa20e9de580
-                    MATRIX: 771->1|880->16|1052->153|1066->159|1131->202|1239->275|1253->281|1309->315|1469->439|1484->445|1526->465|1673->576|1688->582|1731->603|1901->737|1930->744
+                    HASH: 02d2a8b7aaa6762ae66e4e5285e7060a43069b07
+                    MATRIX: 771->1|880->16|1052->153|1066->159|1131->202|1239->275|1253->281|1309->315|1469->439|1484->445|1526->465|1675->578|1690->584|1733->605|1903->739|1932->746
                     LINES: 26->1|29->1|35->7|35->7|35->7|36->8|36->8|36->8|42->14|42->14|42->14|45->17|45->17|45->17|52->24|52->24
                     -- GENERATED --
                 */

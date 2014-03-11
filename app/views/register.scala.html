@@ -1,0 +1,40 @@
+@(personForm: Form[Account])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) } 
+
+<html>
+    <head>
+        <title>E-university</title>
+        <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
+        <link rel="stylesheet" type="text/css" media="screen" href="@routes.Assets.at("stylesheets/login.css")">
+    </head>
+    <body>
+        <header>
+            <a href="@routes.Application.index" id="logo"><span>E-</span>university</a>
+        </header>
+        
+    @form(routes.Application.addUser()) {
+    
+    	<fieldset>
+
+ 		@inputText(personForm("email"), '_label -> "email")
+ 		@inputText(personForm("name"), '_label -> "name")
+ 		@inputText(personForm("password"), '_label -> "password")
+ 		@inputRadioGroup(
+          personForm("dtype"),
+          options = options("dean"->"dean","student"->"student","professor"->"professor"),
+          '_label -> "proffesion"
+        )
+          
+        </fieldset>
+        
+        <div class="actions">
+            <input type="submit" value="Register new account" class="btn primary"> or 
+            <a href="@routes.Application.index()" class="btn">Cancel</a> 
+        </div>
+	}
+    
+    </body>
+</html>

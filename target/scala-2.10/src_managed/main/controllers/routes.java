@@ -1,6 +1,6 @@
 // @SOURCE:/home/piotrek/Kodzenie/db/conf/routes
-// @HASH:ee3ab42f92ab23a4d10a8d5ddd6c15250fd48d9d
-// @DATE:Tue Mar 11 10:48:27 CET 2014
+// @HASH:5eb89a072533bf16c25209588dca2afa93ffb30c
+// @DATE:Tue Mar 11 11:50:45 CET 2014
 
 package controllers;
 

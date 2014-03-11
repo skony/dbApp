@@ -1,6 +1,9 @@
 package controllers;
 
 import static play.data.Form.form;
+
+import com.avaje.ebean.annotation.Transactional;
+
 import models.Course;
 import models.Dean;
 import models.Person;
@@ -108,6 +111,7 @@ public class Courses extends Controller {
 		);
 	}
 	
+	@Transactional
 	public static Result addParticipant(String course) {
 		Logger.debug("Courses:" + course);
         Course.addParticipant(
