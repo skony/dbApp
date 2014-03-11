@@ -13,6 +13,7 @@ import play.mvc.Security;
 import views.html.createForm;
 import views.html.editForm;
 import views.html.list;
+import views.html.signUpForm;
 
 @Security.Authenticated(Secured.class)
 public class Courses extends Controller {
@@ -80,15 +81,35 @@ public class Courses extends Controller {
 	    if(courseForm.hasErrors()) {
 	        return badRequest(editForm.render(name, courseForm));
 	    }
-	    courseForm.get().update(name);
+	    Course.update(name, courseForm.get());
 	    flash("success", "Course " + courseForm.get().name + " has been updated");
 	    return Application.GO_HOME;
 	}
 
 	public static Result delete(String name) {
-		Course.find.ref(name).delete();
-	    flash("success", "Course has been deleted");
+		try
+		{
+			Course.find.ref(name).delete();
+		    flash("success", "Course has been deleted");
+		}
+		catch(Exception e)
+		{
+			flash("error", "Course has already students. Can't be delete");
+		}
 	    return Application.GO_HOME;
+		
+	}
+	
+	public static Result signUp() {
+		//Form<Course> courseForm = form(Course.class);
+		return ok(
+				signUpForm.render(Course.findAll())
+		);
+	}
+	
+	public static Result addParticipant(String s) {
+		Course.addParticipant(s, request().username());
+		return Application.GO_HOME;
 	}
 
 }

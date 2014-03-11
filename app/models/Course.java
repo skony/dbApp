@@ -7,7 +7,9 @@ import java.util.Map;
 
 import javax.persistence.*;
 
+import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Page;
+import com.avaje.ebean.SqlUpdate;
 
 import play.data.format.Formats;
 import play.data.validation.Constraints;
@@ -30,7 +32,7 @@ public class Course extends Model {
 	//@Constraints.Required
 	//public String selection;
 	@ManyToMany
-	public List<Student> participants ;//= new ArrayList<Student>();
+	public List<Student> participants = new ArrayList<Student>();
 	/*
 	public Kurs(String name, int students_limit, String selection, Profesor profesor) {
 		this.name = name;
@@ -78,4 +80,19 @@ public class Course extends Model {
 	            .eq("name", course)
 	            .findRowCount() > 0;
 	    }
+	 
+	 public static void addParticipant(String name, String user){
+		 //Course course = find.where().eq("name", name).findUnique();
+		 String suser = "pskonieczny@gmail.com";
+		 String sname = "Systemy baz danych";
+		 String query = "INSERT INTO course_person VALUES ('" + sname + "', '" + suser + "')";
+		 SqlUpdate insert = Ebean.createSqlUpdate(query);
+		 insert.execute(); 
+	 }
+	 
+	 public static void update(String name, Course course)
+	 {
+		 course.update((Object)name);
+	 }
+	 
 }

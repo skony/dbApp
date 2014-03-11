@@ -14,10 +14,20 @@
         <div class="alert-message warning">
             <strong>Done!</strong> @flash.get("success")
         </div>
-    } 
+    }
+    @if(flash.containsKey("error")) {
+        <div class="alert-message warning">
+            <strong>Forbidden!</strong> @flash.get("error")
+        </div>
+    }  
 	@if(user == "dean"){
     <div id="actions">     
         <a class="btn success" id="add" href="@routes.Courses.create()">Add a new course</a>      
+    </div>
+    }
+    @if(user == "student"){
+    <div id="actions">     
+        <a class="btn success" id="add" href="@routes.Courses.signUp()">Sign up to new course</a>      
     </div>
     }
     

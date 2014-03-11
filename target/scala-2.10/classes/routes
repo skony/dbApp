@@ -15,6 +15,10 @@ GET     /courses                  	controllers.Courses.list()
 GET     /courses/new              	controllers.Courses.create()
 POST    /courses                  	controllers.Courses.save()
 
+#SignUp to course
+GET		/courses/sign				controllers.Courses.signUp()
+POST	/courses/sign					controllers.Courses.addParticipant(name:String)
+
 # Edit existing course
 GET     /courses/:name              controllers.Courses.edit(name:String)
 POST    /courses/:name              controllers.Courses.update(name:String)

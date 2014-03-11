@@ -1,0 +1,23 @@
+@(courses: List[Course])
+
+@import helper._
+
+@implicitFieldConstructor = @{ FieldConstructor(twitterBootstrapInput.render) }
+
+@main{
+	
+	<h1>Sign up to new course</h1>
+	
+	
+		@for(course <- courses){
+			@course.name
+			@course.professor.name
+			@course.students_limit
+	
+			<div class="actions">
+	            <a href="@routes.Courses.addParticipant(course.name)" class="btn">Sign up for this course</a> 
+	        </div>
+	
+		}
+		<a href="@routes.Application.index()" class="btn">Cancel</a> 
+}

@@ -21,9 +21,9 @@ public class Student extends Person {
 			return false;	
 	}
 	
-	public static Person findByEmail(String email)
+	public static Student findByEmail(String email)
 	{
-		return find
+		return (Student) find
 				.where()
 				.eq("email", email)
 				.findUnique();

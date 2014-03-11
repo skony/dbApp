@@ -1,6 +1,6 @@
 // @SOURCE:/home/piotrek/Kodzenie/db/conf/routes
-// @HASH:ec50ce6bc832e6828117df10edd62b4e3981d3a1
-// @DATE:Mon Mar 10 00:37:13 CET 2014
+// @HASH:d7def7f316ae28663ed29ead58f15206fdf5aa5e
+// @DATE:Tue Mar 11 07:36:31 CET 2014
 
 import Routes.{prefix => _prefix, defaultPrefix => _defaultPrefix}
 import play.core._
@@ -13,7 +13,9 @@ import play.libs.F
 import Router.queryString
 
 
-// @LINE:26
+// @LINE:30
+// @LINE:27
+// @LINE:24
 // @LINE:23
 // @LINE:20
 // @LINE:19
@@ -26,11 +28,11 @@ import Router.queryString
 // @LINE:6
 package controllers {
 
-// @LINE:26
+// @LINE:30
 class ReverseAssets {
     
 
-// @LINE:26
+// @LINE:30
 def at(file:String): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "assets/" + implicitly[PathBindable[String]].unbind("file", file))
 }
@@ -39,6 +41,8 @@ def at(file:String): Call = {
 }
                           
 
+// @LINE:27
+// @LINE:24
 // @LINE:23
 // @LINE:20
 // @LINE:19
@@ -49,6 +53,18 @@ class ReverseCourses {
     
 
 // @LINE:19
+def signUp(): Call = {
+   Call("GET", _prefix + { _defaultPrefix } + "courses/sign")
+}
+                                                
+
+// @LINE:20
+def addParticipant(name:String): Call = {
+   Call("POST", _prefix + { _defaultPrefix } + "courses/sign" + queryString(List(Some(implicitly[QueryStringBindable[String]].unbind("name", name)))))
+}
+                                                
+
+// @LINE:23
 def edit(name:String): Call = {
    Call("GET", _prefix + { _defaultPrefix } + "courses/" + implicitly[PathBindable[String]].unbind("name", dynamicString(name)))
 }
@@ -66,7 +82,7 @@ def list(): Call = {
 }
                                                 
 
-// @LINE:23
+// @LINE:27
 def delete(name:String): Call = {
    Call("POST", _prefix + { _defaultPrefix } + "courses/" + implicitly[PathBindable[String]].unbind("name", dynamicString(name)) + "/delete")
 }
@@ -78,7 +94,7 @@ def save(): Call = {
 }
                                                 
 
-// @LINE:20
+// @LINE:24
 def update(name:String): Call = {
    Call("POST", _prefix + { _defaultPrefix } + "courses/" + implicitly[PathBindable[String]].unbind("name", dynamicString(name)))
 }
@@ -124,7 +140,9 @@ def login(): Call = {
                   
 
 
-// @LINE:26
+// @LINE:30
+// @LINE:27
+// @LINE:24
 // @LINE:23
 // @LINE:20
 // @LINE:19
@@ -137,11 +155,11 @@ def login(): Call = {
 // @LINE:6
 package controllers.javascript {
 
-// @LINE:26
+// @LINE:30
 class ReverseAssets {
     
 
-// @LINE:26
+// @LINE:30
 def at : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Assets.at",
    """
@@ -155,6 +173,8 @@ def at : JavascriptReverseRoute = JavascriptReverseRoute(
 }
               
 
+// @LINE:27
+// @LINE:24
 // @LINE:23
 // @LINE:20
 // @LINE:19
@@ -165,6 +185,28 @@ class ReverseCourses {
     
 
 // @LINE:19
+def signUp : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Courses.signUp",
+   """
+      function() {
+      return _wA({method:"GET", url:"""" + _prefix + { _defaultPrefix } + """" + "courses/sign"})
+      }
+   """
+)
+                        
+
+// @LINE:20
+def addParticipant : JavascriptReverseRoute = JavascriptReverseRoute(
+   "controllers.Courses.addParticipant",
+   """
+      function(name) {
+      return _wA({method:"POST", url:"""" + _prefix + { _defaultPrefix } + """" + "courses/sign" + _qS([(""" + implicitly[QueryStringBindable[String]].javascriptUnbind + """)("name", name)])})
+      }
+   """
+)
+                        
+
+// @LINE:23
 def edit : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Courses.edit",
    """
@@ -197,7 +239,7 @@ def list : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:23
+// @LINE:27
 def delete : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Courses.delete",
    """
@@ -219,7 +261,7 @@ def save : JavascriptReverseRoute = JavascriptReverseRoute(
 )
                         
 
-// @LINE:20
+// @LINE:24
 def update : JavascriptReverseRoute = JavascriptReverseRoute(
    "controllers.Courses.update",
    """
@@ -290,7 +332,9 @@ def login : JavascriptReverseRoute = JavascriptReverseRoute(
         
 
 
-// @LINE:26
+// @LINE:30
+// @LINE:27
+// @LINE:24
 // @LINE:23
 // @LINE:20
 // @LINE:19
@@ -304,11 +348,11 @@ def login : JavascriptReverseRoute = JavascriptReverseRoute(
 package controllers.ref {
 
 
-// @LINE:26
+// @LINE:30
 class ReverseAssets {
     
 
-// @LINE:26
+// @LINE:30
 def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Assets.at(path, file), HandlerDef(this, "controllers.Assets", "at", Seq(classOf[String], classOf[String]), "GET", """ Map static resources from the /public folder to the /assets URL path""", _prefix + """assets/$file<.+>""")
 )
@@ -317,6 +361,8 @@ def at(path:String, file:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.
 }
                           
 
+// @LINE:27
+// @LINE:24
 // @LINE:23
 // @LINE:20
 // @LINE:19
@@ -327,6 +373,18 @@ class ReverseCourses {
     
 
 // @LINE:19
+def signUp(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Courses.signUp(), HandlerDef(this, "controllers.Courses", "signUp", Seq(), "GET", """SignUp to course""", _prefix + """courses/sign""")
+)
+                      
+
+// @LINE:20
+def addParticipant(name:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
+   controllers.Courses.addParticipant(name), HandlerDef(this, "controllers.Courses", "addParticipant", Seq(classOf[String]), "POST", """""", _prefix + """courses/sign""")
+)
+                      
+
+// @LINE:23
 def edit(name:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Courses.edit(name), HandlerDef(this, "controllers.Courses", "edit", Seq(classOf[String]), "GET", """ Edit existing course""", _prefix + """courses/$name<[^/]+>""")
 )
@@ -344,7 +402,7 @@ def list(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 )
                       
 
-// @LINE:23
+// @LINE:27
 def delete(name:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Courses.delete(name), HandlerDef(this, "controllers.Courses", "delete", Seq(classOf[String]), "POST", """ Delete a course""", _prefix + """courses/$name<[^/]+>/delete""")
 )
@@ -356,7 +414,7 @@ def save(): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
 )
                       
 
-// @LINE:20
+// @LINE:24
 def update(name:String): play.api.mvc.HandlerRef[_] = new play.api.mvc.HandlerRef(
    controllers.Courses.update(name), HandlerDef(this, "controllers.Courses", "update", Seq(classOf[String]), "POST", """""", _prefix + """courses/$name<[^/]+>""")
 )
